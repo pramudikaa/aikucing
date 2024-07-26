@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ras Kucing</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="description" content="Website untuk klasifikasi dan informasi tentang berbagai ras kucing.">
+</head>
+<body class="bg-gray-100">
+
+<!-- Header -->
+<header class="bg-cover bg-center py-6" style="background-image: url('./static/images/gambar2.jpg')">
+    <div class="container mx-auto px-4">
+      <h1 class="text-2xl font-bold text-white">Klasifikasi Ras Kucing</h1>
+      <!-- Navigasi -->
+      <nav class="mt-2">
+          <ul class="flex space-x-4">
+              <li><a href="#" class="text-gray-900 hover:text-white">Beranda</a></li>
+              <li><a href="#" class="text-gray-900 hover:text-white">Tentang</a></li>
+              <li><a href="#" class="text-gray-900 hover:text-white">Ras Kucing</a></li>
+              <li><a href="#" class="text-gray-900 hover:text-white">Artikel</a></li>
+              <li><a href="#" class="text-gray-900 hover:text-white">Kontak</a></li>
+          </ul>
+      </nav>
+    </div>
+</header>
+
+<!-- Banner Utama -->
+<section class="bg-gradient-to-r from-green-400 to-blue-500 py-20 text-center">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold mb-4">Upload Gambar Kucing</h2>
+        <form id="upload_form" enctype="multipart/form-data" class="flex flex-col items-center">
+            <input type="file" name="file" id="upload_file" class="py-2 px-4 border border-gray-300 rounded-md mb-4">
+            <button type="button" onclick="startPredict()" class="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600">Upload and Predict</button>
+        </form>
+        <div id="result" class="mt-4 text-white"></div>
+    </div>
+</section>
+
+<!-- Bagian Klasifikasi Ras Kucing -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8">Contoh Ras Kucing</h2>
+        <div class="scroll-container flex overflow-x-auto space-x-4 w-full">
+            <!-- Item ras kucing -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar3.jpg" alt="Ras Kucing 1" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Persian</h3>
+                    <p class="text-gray-600">Berasal dari Iran dan telah menjadi sangat populer di seluruh dunia, terutama karena bulu panjang dan wajah datarnya yang khas.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+            <!-- Item ras kucing lainnya -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar4.jpg" alt="Ras Kucing 2" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Munchkin</h3>
+                    <p class="text-gray-600">Berasal dari Amerika Serikat, Kucing ini mendapatkan namanya dan popularitasnya pada tahun 1990-an. Meskipun mutasi genetik yang menghasilkan kaki pendek telah ada di berbagai belahan dunia.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+            <!-- Item ras kucing lainnya -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar5.jpg" alt="Ras Kucing 3" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Abyssinian</h3>
+                    <p class="text-gray-600">Berasal dari Abyssinia sekarang Ethiopia, Kucing ini diyakini sebagai salah satu ras kucing domestik tertua.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+            <!-- Item ras kucing lainnya -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar6.jpg" alt="Ras Kucing 4" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Bengal</h3>
+                    <p class="text-gray-600">Berasal dari Amerika Serikat, Ras ini diciptakan pada tahun 1970-an dengan mengawinkan kucing domestik dengan kucing macan tutul Asia. Hasilnya adalah kucing dengan pola bulu seperti macan tutul yang eksotis.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+            <!-- Item ras kucing lainnya -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar7.jpeg" alt="Ras Kucing 5" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Birman</h3>
+                    <p class="text-gray-600">Berasal dari Myanmar, Kucing ini pertama kali diperkenalkan ke Prancis pada awal abad ke-20. Mereka dikenal karena bulu semi-panjang dan mata birunya yang mencolok.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+            <!-- Item ras kucing lainnya -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar9.jpeg" alt="Ras Kucing 6" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">British Shorthair</h3>
+                    <p class="text-gray-600">Berasal dari Inggris, Salah satu ras kucing domestik tertua di Inggris. British Shorthair, telah ada selama berabad-abad. Mereka dikenal karena tubuh kekar dan bulu pendek yang tebal.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+            <!-- Item ras kucing lainnya -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar10.jpeg" alt="Ras Kucing 7" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Egyptian Mau</h3>
+                    <p class="text-gray-600">Berasal dari Mesir, Kucing ini memiliki sejarah panjang yang dapat ditelusuri kembali ke zaman Mesir Kuno. Mereka dikenal karena bulu mereka yang bertutul alami.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+            <!-- Item ras kucing lainnya -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
+                <img src="./static/images/gambar11.jpg" alt="Ras Kucing 8" class="w-full h-64 object-cover object-center">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Siamese</h3>
+                    <p class="text-gray-600">Berasal dari Thailand, Kucing ini dikenal dengan tubuh yang ramping, mata biru mencolok, dan pola bulu yang khas. Mereka juga sangat vokal dan penuh kasih sayang.</p>
+                    <a href="#" class="block mt-2 text-blue-500 hover:text-blue-600">Pelajari lebih lanjut</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 py-6 mt-10">
+    <div class="container mx-auto px-4 text-white">
+        <div class="flex justify-between">
+            <div>
+                <h3 class="font-bold text-lg">Kontak Kami</h3>
+                <p>Email: info@example.com</p>
+                <p>Telepon: +62 812 3456 7890</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg">Ikuti Kami</h3>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:text-gray-400">Facebook</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Twitter</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-4 text-center">
+            <p>&copy; 2024 Klasifikasi Ras Kucing. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function startPredict() {
+        // Mengambil gambar dari input dengan id "upload_file"
+        var formData = new FormData();
+        var image = $("#upload_file")[0].files[0];
+        formData.append("image", image);
+
+        // Melakukan request AJAX
+        $.ajax({
+            url: "http://127.0.0.1:5000/kucing",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                $("#result").text(response);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("Error:", textStatus, errorThrown);
+                $("#result").text("Terjadi kesalahan. Silakan coba lagi.");
+            },
+        });
+    }
+</script>
+
+</body>
+</html>
